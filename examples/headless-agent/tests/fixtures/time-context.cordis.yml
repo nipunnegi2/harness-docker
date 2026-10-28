@@ -1,0 +1,33 @@
+# Test-only composition: keep time-context opt-in while exercising its real Loader/app path.
+- id: time-context-mock-llm
+  name: './time-context-mock-llm.ts'
+
+# Managed child-process groups for the bash executor (spawn/kill/output plumbing).
+- id: subprocess
+  name: '@pentest-harness/dsh-subprocess-local'
+
+- id: bash
+  name: '@pentest-harness/dsh-bash-local'
+
+- id: time-context
+  name: '@pentest-harness/dsh-time-context'
+
+- id: agent-spine
+  name: '@pentest-harness/dsh-agent-spine-demo'
+  config:
+    agents:
+      - id: main
+        provider: time-context-mock
+        model: time-context-mock
+        cwd: !!js process.cwd()
+    persona: 'Test the time-context plugin.'
+    workspaceContext: false
+
+- id: persistence
+  name: '@pentest-harness/dsh-session-persistence-jsonl'
+  config:
+    root: './.sessions'
+    compression: 'none'
+
+- id: checkpoint-policy
+  name: '@pentest-harness/dsh-session-checkpoint-policy'

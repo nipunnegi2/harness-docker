@@ -1,0 +1,28 @@
+# pentest-harness, containerised.
+#
+#   1. cp .env.example .env   and paste your LLM API key(s)
+#   2. docker compose up --build
+#   3. open http://127.0.0.1:2323
+#
+services:
+  harness:
+    build: .
+    image: pentest-harness-docker
+    container_name: harness
+    # Published to the HOST LOOPBACK ONLY. The agent can run shell commands, so
+    # its UI must never be reachable over a network. Keep this on 127.0.0.1.
+    ports:
+      - "127.0.0.1:2323:2323"
+    environment:
+      # Bring your own key(s). Only the provider you configure is used.
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      DEEPSEEK_API_KEY: "${DEEPSEEK_API_KEY:-}"
+      # Telemetry stays off unless you explicitly enable it.
+      DSH_TELEMETRY_MODE: "${DSH_TELEMETRY_MODE:-DISABLED}"
+    # Persist your provider settings / credentials across restarts.
+    volumes:
+      - harness-dsh:/opt/pentest-harness/.dsh
+
+volumes:
+  harness-dsh:

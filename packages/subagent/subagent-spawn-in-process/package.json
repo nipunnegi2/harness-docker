@@ -1,0 +1,60 @@
+{
+  "name": "@pentest-harness/dsh-subagent-spawn-in-process",
+  "description": "In-process spawn subagent backend: runs a fresh child agent on ctx.agents",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/subagent/subagent-spawn-in-process"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-subagent": "workspace:^",
+    "@pentest-harness/dsh-subagent-in-process-driver": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@pentest-harness/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/cordis-plugin-loader": "workspace:^",
+    "@pentest-harness/dsh-agent": "workspace:^",
+    "@pentest-harness/dsh-agent-loop": "workspace:^",
+    "@pentest-harness/dsh-agent-loop-testkit": "workspace:^",
+    "@pentest-harness/dsh-bash-local": "workspace:^",
+    "@pentest-harness/dsh-subprocess-local": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-llm": "workspace:^",
+    "@pentest-harness/dsh-llm-deepseek": "workspace:^",
+    "@pentest-harness/dsh-session": "workspace:^",
+    "@pentest-harness/dsh-subagent": "workspace:^",
+    "@pentest-harness/dsh-subagent-in-process-driver": "workspace:^",
+    "@pentest-harness/dsh-tool-bash": "workspace:^",
+    "@pentest-harness/dsh-tool-subagent": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  }
+}

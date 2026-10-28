@@ -1,0 +1,58 @@
+{
+  "name": "@pentest-harness/dsh-client-ui-workflow",
+  "description": "Live agent-run workflow tab: turns, steps, and tool calls rendered as a live stream beside Chat / Trajectory / Bounty",
+  "version": "0.1.0",
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/client/ui-workflow"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
+    "./client": { "types": "./lib/types/client/index.d.ts", "default": "./lib/client.js" },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@pentest-harness/dsh-client-locale",
+        "@pentest-harness/dsh-client-runtime",
+        "@pentest-harness/dsh-client-ui-conversation",
+        "@pentest-harness/dsh-client-ui-trajectory"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "bundle": "tsdown",
+    "watch": "tsdown --watch"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-conversation": "workspace:^",
+    "@pentest-harness/dsh-client-ui-trajectory": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-conversation": "workspace:^",
+    "@pentest-harness/dsh-client-ui-primitives": "workspace:^",
+    "@pentest-harness/dsh-client-ui-slots": "workspace:^",
+    "@pentest-harness/dsh-client-ui-trajectory": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.0",
+    "@pentest-harness/cordis": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "files": ["lib/index.js", "lib/client.js", "lib/types/**/*.d.ts"]
+}

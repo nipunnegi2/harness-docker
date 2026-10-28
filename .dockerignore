@@ -1,0 +1,19 @@
+# Keep the build context small and never copy local build output / secrets.
+.git
+**/node_modules
+**/lib
+**/dist
+**/*.tsbuildinfo
+.dsh
+.env
+.env.*
+!.env.example
+**/.cache
+.pnpm-store
+coverage
+**/.pytest_cache
+**/__pycache__
+**/*.log
+.worktrees
+.sessions
+**/.sessions

@@ -1,0 +1,11 @@
+# Add the persisted goal domain and its model-facing tools to the real one-shot app.
+- id: base
+  name: '@pentest-harness/cordis-plugin-include'
+  config:
+    path: ./cordis.yml
+    patches:
+      - insert:
+          - id: goal
+            name: '@pentest-harness/dsh-goal'
+          - id: tool-goal
+            name: '@pentest-harness/dsh-tool-goal'

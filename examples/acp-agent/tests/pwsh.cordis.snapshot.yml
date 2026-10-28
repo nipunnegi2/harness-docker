@@ -1,0 +1,38 @@
+# Minimal keyless composition: real app, pwsh executor, and pwsh tool; replayed model.
+- id: llm-replay
+  name: '@pentest-harness/dsh-llm-replay'
+  config:
+    providers:
+      - id: deepseek-official
+        name: DeepSeek
+        models:
+          - id: deepseek-v4-pro
+
+- id: subprocess
+  name: '@pentest-harness/dsh-subprocess-local'
+
+- id: bash
+  name: '@pentest-harness/dsh-pwsh-local'
+
+- id: shell-env
+  name: '@pentest-harness/dsh-shell-env'
+
+- id: acp-agent
+  name: '@pentest-harness/dsh-acp-demo'
+  config:
+    provider: deepseek-official
+    model: deepseek-v4-pro
+    persistenceRoot: !!js process.env.DSH_SNAPSHOT_SESSIONS_ROOT ?? './.sessions'
+    persistenceCompression: none
+    workspaceContext: false
+    skills:
+      enabled: false
+    # job_output/job_kill stay mounted (the bundle's toolJobs default) so
+    # background pwsh runs are readable and killable.
+    goals: false
+    # The pwsh tool replaces the bundle's bash tool in this composition.
+    toolBash: false
+    persona: You are a concise snapshot agent working in {{cwd}}.
+
+- id: tool-pwsh
+  name: '@pentest-harness/dsh-tool-pwsh'

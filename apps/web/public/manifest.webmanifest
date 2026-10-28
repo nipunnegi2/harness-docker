@@ -1,0 +1,18 @@
+{
+  "id": "/",
+  "name": "Pentest Harness",
+  "short_name": "PENTEST",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "theme_color": "#0b0b10",
+  "background_color": "#0b0b10",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

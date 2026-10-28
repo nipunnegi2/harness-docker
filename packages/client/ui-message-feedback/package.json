@@ -1,0 +1,84 @@
+{
+  "name": "@pentest-harness/dsh-client-ui-message-feedback",
+  "description": "Per-message feedback controls contributed to the assistant-message action strip, backed by the messageFeedback Host Remote",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/client/ui-message-feedback"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@pentest-harness/dsh-client-runtime",
+        "@pentest-harness/dsh-api-remotes",
+        "@pentest-harness/dsh-client-locale",
+        "@pentest-harness/dsh-client-ui-conversation"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "bundle": "tsdown",
+    "watch": "tsdown --watch"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/dsh-api-remotes": "workspace:^",
+    "@pentest-harness/dsh-client-connection": "workspace:^",
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-conversation": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-message-feedback": "workspace:^",
+    "@pentest-harness/dsh-typert-protocol": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/dsh-api-remotes": "workspace:^",
+    "@pentest-harness/dsh-client-connection": "workspace:^",
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-test-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-conversation": "workspace:^",
+    "@pentest-harness/dsh-client-ui-primitives": "workspace:^",
+    "@pentest-harness/dsh-client-ui-slots": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-message-feedback": "workspace:^",
+    "@pentest-harness/dsh-typert-protocol": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/types/**/*.d.ts"
+  ]
+}

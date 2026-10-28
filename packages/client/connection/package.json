@@ -1,0 +1,73 @@
+{
+  "name": "@pentest-harness/dsh-client-connection",
+  "description": "Wire consumer layer: HTTP-up/WebSocket-down client, ConnectionController dual streams with reconnect, and fixture api",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/client/connection"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@pentest-harness/schemastery": "workspace:^",
+    "ws": "^8.21.0"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "peerDependencies": {
+    "@pentest-harness/dsh-host-webserver": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/dsh-attachment": "workspace:^",
+    "@pentest-harness/dsh-host-apiproxy": "workspace:^",
+    "@pentest-harness/dsh-commands": "workspace:^",
+    "@pentest-harness/dsh-llm": "workspace:^",
+    "@pentest-harness/dsh-session": "workspace:^",
+    "@pentest-harness/dsh-tools": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/dsh-host-webserver": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@types/ws": "^8.18.1",
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/dsh-attachment": "workspace:^",
+    "@pentest-harness/dsh-host-apiproxy": "workspace:^",
+    "@pentest-harness/dsh-commands": "workspace:^",
+    "@pentest-harness/dsh-llm": "workspace:^",
+    "@pentest-harness/dsh-session": "workspace:^",
+    "@pentest-harness/dsh-tools": "workspace:^"
+  }
+}

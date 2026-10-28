@@ -1,0 +1,87 @@
+/* Shell-owned mount defaults. Theme tokens arrive with the ui-theme client
+ * plugin before the loader roster activates. */
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(
+    --dsw-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Microsoft YaHei',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif
+  );
+  /* Grayscale antialiasing over subpixel rendering: WebKit/Blink and the
+     Firefox macOS equivalent; other engines ignore both lines. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--dsw-alias-label-primary, #0f1115);
+  background: var(--dsw-alias-bg-base, #fff);
+}
+
+/* Form controls don't inherit the body font (UA sheets pin their families —
+   Chrome buttons fall back to Arial, textareas to monospace), so the app
+   stack is re-applied to them explicitly, as upstream's global reset does. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ---- Pentest Harness feel layer ----
+   Motion-aware shell polish: smooth theme crossfades, subtle button/input
+   transitions, and a focused scrollbar so the harness feels alive but stays
+   tasteful. All of it yields to prefers-reduced-motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  body * {
+    transition-property: background-color, border-color, color, opacity, transform, box-shadow;
+    transition-duration: 160ms;
+    transition-timing-function: ease-out;
+  }
+}
+
+button {
+  transition:
+    transform 140ms ease-out,
+    background-color 160ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+input,
+textarea {
+  transition: border-color 160ms ease-out, box-shadow 200ms ease-out;
+}
+
+input:focus,
+textarea:focus {
+  border-color: color-mix(in srgb, var(--dsw-alias-brand-primary) 45%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--dsw-alias-brand-primary) 14%, transparent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 26%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}

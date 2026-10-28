@@ -1,0 +1,35 @@
+# Minimal keyless composition: real app, bash, and search tool; replayed model.
+- id: llm-replay
+  name: '@pentest-harness/dsh-llm-replay'
+  config:
+    providers:
+      - id: deepseek-official
+        name: DeepSeek
+        models:
+          - id: deepseek-v4-pro
+
+- id: subprocess
+  name: '@pentest-harness/dsh-subprocess-local'
+
+- id: bash
+  name: '@pentest-harness/dsh-bash-local'
+
+- id: acp-agent
+  name: '@pentest-harness/dsh-acp-demo'
+  config:
+    provider: deepseek-official
+    model: deepseek-v4-pro
+    persistenceRoot: !!js process.env.DSH_SNAPSHOT_SESSIONS_ROOT ?? './.sessions'
+    persistenceCompression: none
+    workspaceContext: false
+    skills:
+      enabled: false
+    toolJobs: false
+    goals: false
+    persona: You are a concise snapshot agent working in {{cwd}}.
+
+- id: tool-fs-search
+  name: '@pentest-harness/dsh-tool-fs-search'
+  config:
+    sampleOverCapGlobResults: true
+    globMaxResults: 4

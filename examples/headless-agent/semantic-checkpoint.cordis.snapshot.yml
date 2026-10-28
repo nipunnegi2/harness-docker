@@ -1,0 +1,41 @@
+# Keyless real-Loader composition for the semantic-checkpoint recovery snapshot.
+# The headless driver resumes the seeded interrupted session and emits its next
+# turn over stream-json; the replay adapter supplies the deterministic response.
+
+- id: persistence
+  name: '@pentest-harness/dsh-session-persistence-jsonl'
+  config:
+    root: './.sessions'
+    compression: none
+
+- id: checkpoint
+  name: '@pentest-harness/dsh-session-checkpoint-policy'
+
+- id: replay
+  name: '@pentest-harness/dsh-llm-replay'
+  config:
+    file: !!js process.env.DSH_SNAPSHOT_FILE
+    overrideFile: !!js process.env.DSH_SNAPSHOT_OVERRIDE
+
+# Managed child-process groups for the bash executor (spawn/kill/output plumbing).
+- id: subprocess
+  name: '@pentest-harness/dsh-subprocess-local'
+
+- id: bash
+  name: '@pentest-harness/dsh-bash-local'
+  config:
+    timeoutMs: 60000
+
+- id: agent
+  name: '@pentest-harness/dsh-agent-spine-demo'
+  config:
+    agents: []
+    workspaceContext: false
+    skills:
+      enabled: false
+    toolJobs: false
+    goals: false
+
+# Await the persisted resume before the headless driver inspects root agents.
+- id: resumed-agent
+  name: './tests/fixtures/semantic-checkpoint-agent.ts'

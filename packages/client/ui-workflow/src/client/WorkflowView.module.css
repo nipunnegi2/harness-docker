@@ -1,0 +1,260 @@
+.wrap {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px 14px;
+  gap: 12px;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  font-family: var(--dsw-font-ui, -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif);
+}
+
+/* ── header ─────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  padding: 0 4px;
+}
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.logoMark {
+  display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: 2px; border: 1px solid #e5e5e5;
+  background: #fafafa; color: #0a0a0a; flex: none;
+}
+.kicker {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  color: #9a9a9a; text-transform: uppercase;
+}
+.title { margin: 0; font-size: 16px; font-weight: 650; color: #f5f5f5; }
+.meta { display: flex; align-items: center; gap: 8px; flex: none; flex-wrap: wrap; justify-content: flex-end; }
+.live {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; color: #f5f5f5;
+}
+.live span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #ffffff; border: 1px solid #e5e5e5;
+  animation: workflow-pulse 1.6s ease-in-out infinite;
+}
+@keyframes workflow-pulse { 50% { opacity: .35; } }
+.pill, .pillFail {
+  display: inline-flex; align-items: baseline; gap: 4px; padding: 3px 9px;
+  border: 1px solid #3a3a3a; border-radius: 999px;
+  font-size: 11px; color: #d4d4d4;
+}
+.pill strong { font-size: 12px; color: #f5f5f5; }
+.pillFail { border-color: #666666; color: #a3a3a3; }
+.pillFail strong { color: #ffffff; }
+
+/* ── latest thought banner ──────────────────────────── */
+.thoughtBanner {
+  flex: none;
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 12px;
+  border: 1px solid #333333;
+  border-left: 2px solid #f5f5f5;
+  border-radius: 4px;
+  background: #141414;
+  overflow: hidden;
+}
+.thoughtBanner p {
+  margin: 2px 0 0; font-size: 12px; line-height: 1.45; color: #c9c9c9;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.thoughtLabel {
+  flex: none; font-size: 9px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: #8a8a8a; padding-top: 2px;
+}
+
+/* ── trickest-style run flow ────────────────────────── */
+.flowWrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+  background: #0f0f0f;
+  overflow: hidden;
+}
+.flowHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #2e2e2e;
+  background: #141414;
+  flex: none;
+}
+.flowHead .timelineMeta { margin-right: auto; }
+.flowZoom { display: inline-flex; align-items: center; gap: 3px; }
+.zoomBtn {
+  width: 22px; height: 22px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background: transparent;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.zoomBtn:hover { border-color: #f5f5f5; color: #ffffff; }
+.zoomPct {
+  font-size: 10px; color: #8a8a8a; min-width: 34px; text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* canvas */
+.flow {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background:
+    linear-gradient(#ffffff0d 1px, transparent 1px) 0 0 / 100% 24px,
+    linear-gradient(90deg, #ffffff0d 1px, transparent 1px) 0 0 / 24px 100%,
+    #0a0a0a;
+  padding: 18px 16px;
+}
+.flowTrack {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: max-content;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+
+/* node cards: hard black/white/grey, sharp corners */
+.flowNode {
+  width: 252px;
+  flex: none;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #4d4d4d;
+  border-radius: 2px;
+  background: #141414;
+  padding: 9px 11px;
+  box-shadow: 0 1px 0 #000000;
+}
+.flowThought {
+  border-left: 2px solid #f5f5f5;
+  max-height: 190px;
+  overflow: hidden;
+}
+.flowThoughtText {
+  margin: 3px 0 0;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #c9c9c9;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.flowTool[data-status="done"] { border-color: #4d4d4d; border-left: 2px solid #9a9a9a; }
+.flowTool[data-status="failed"] { border-color: #6b6b6b; border-left: 2px solid #ffffff; background: #1c1c1c; }
+.flowTool[data-status="running"] { border-color: #d4d4d4; border-left: 2px solid #ffffff; }
+
+.flowNodeTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+.flowKindTag {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #9a9a9a;
+  text-transform: uppercase;
+}
+.flowThought .flowKindTag { color: #f5f5f5; }
+.flowTool[data-status="running"] .flowKindTag { color: #ffffff; animation: workflow-pulse 1s infinite; }
+.flowTool[data-status="failed"] .flowKindTag { color: #ffffff; }
+.flowTime {
+  font-size: 9px; color: #7a7a7a; flex: none;
+  font-variant-numeric: tabular-nums;
+}
+.flowDesc {
+  font-size: 11.5px;
+  font-weight: 650;
+  color: #f5f5f5;
+  line-height: 1.4;
+}
+.flowCmd {
+  display: block;
+  font-size: 10px;
+  line-height: 1.5;
+  font-family: var(--dsw-font-mono, ui-monospace, Menlo, monospace);
+  color: #b8b8b8;
+  background: #0a0a0a;
+  border: 1px solid #2e2e2e;
+  border-radius: 2px;
+  padding: 4px 7px;
+  max-height: 64px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* connector: node → node */
+.flowLink {
+  flex: none;
+  align-self: center;
+  width: 26px;
+  height: 1px;
+  background: #3a3a3a;
+  position: relative;
+  margin: 0 2px;
+}
+.flowLink::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid #3a3a3a;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+.flowEmpty {
+  padding: 40px;
+  text-align: center;
+  color: #7a7a7a;
+  font-size: 12px;
+}
+
+/* ── footer ─────────────────────────────────────────── */
+.footer {
+  flex: none;
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10.5px;
+  color: #8a8a8a;
+  padding: 0 4px;
+}
+.footerDot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #f5f5f5; border: 1px solid #e5e5e5;
+}
+
+/* ── shared title/meta labels (flow header + footer) ─── */
+.timelineTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.timelineMeta {
+  font-size: 10px;
+  color: #8a8a8a;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}

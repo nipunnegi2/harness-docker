@@ -1,0 +1,59 @@
+{
+  "name": "@pentest-harness/dsh-compaction",
+  "description": "Abstract compaction service seam (ctx.compaction) for the Pentest Harness",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/compaction/compaction"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./checkpoint": {
+      "types": "./lib/types/checkpoint.d.ts",
+      "default": "./lib/types/checkpoint.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/dsh-brand": "workspace:^",
+    "@pentest-harness/dsh-commands": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-llm": "workspace:^",
+    "@pentest-harness/dsh-session": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/dsh-brand": "workspace:^",
+    "@pentest-harness/dsh-commands": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-llm": "workspace:^",
+    "@pentest-harness/dsh-session": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "@pentest-harness/dsh-client-ui-theme",
+  "description": "Theme plugin: Host bootstrap for the pre-plugin palette; DOM-free ThemeRuntime for light/dark/system state; --dsw-* token styles and Appearance settings row",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/client/ui-theme"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@pentest-harness/dsh-client-connection",
+        "@pentest-harness/dsh-client-runtime",
+        "@pentest-harness/dsh-client-locale",
+        "@pentest-harness/dsh-client-ui-settings",
+        "@pentest-harness/dsh-api-remotes"
+      ],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/dsh-api-remotes": "workspace:^",
+    "@pentest-harness/dsh-client-connection": "workspace:^",
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-settings": "workspace:^",
+    "@pentest-harness/dsh-host-webserver": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-settings": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/dsh-api-remotes": "workspace:^",
+    "@pentest-harness/dsh-client-connection": "workspace:^",
+    "@pentest-harness/dsh-client-locale": "workspace:^",
+    "@pentest-harness/dsh-client-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-test-runtime": "workspace:^",
+    "@pentest-harness/dsh-client-ui-primitives": "workspace:^",
+    "@pentest-harness/dsh-client-ui-settings": "workspace:^",
+    "@pentest-harness/dsh-client-ui-slots": "workspace:^",
+    "@pentest-harness/dsh-host-webserver": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-settings": "workspace:^",
+    "@types/react": "~18.3.1",
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/styles",
+    "lib/types/**/*.d.ts"
+  ],
+  "scripts": {
+    "bundle": "tsdown",
+    "watch": "tsdown --watch"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "@pentest-harness/schemastery": "workspace:^"
+  }
+}

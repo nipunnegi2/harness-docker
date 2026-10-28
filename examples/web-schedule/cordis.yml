@@ -1,0 +1,9 @@
+# Opt-in Schedule patch over the shipped Web composition. The owner observes
+# only roots published after this overlay loads.
+
+- insert:
+    - id: time-context
+      name: '@pentest-harness/dsh-time-context'
+
+    - id: schedule
+      name: '@pentest-harness/dsh-schedule'

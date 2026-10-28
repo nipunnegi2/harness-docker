@@ -1,0 +1,76 @@
+{
+  "name": "@pentest-harness/dsh-acp-demo",
+  "description": "ACP automation server app: agent spine + JSONL persistence + ACP transport, with a JSON-RPC stdio bin",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1N6H/pentest-harness.git",
+    "directory": "packages/examples/acp-demo"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "bin": {
+    "dsh-acp-demo": "lib/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./bin": {
+      "types": "./lib/types/bin.d.ts",
+      "default": "./lib/bin.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/bin.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@pentest-harness/cordis-plugin-include": "workspace:^",
+    "@pentest-harness/cordis-plugin-loader": "workspace:^",
+    "@pentest-harness/dsh-acp": "workspace:^",
+    "@pentest-harness/dsh-agent-spine-demo": "workspace:^",
+    "@pentest-harness/dsh-app-boot": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-session-checkpoint-policy": "workspace:^",
+    "@pentest-harness/dsh-session-persistence-jsonl": "workspace:^",
+    "@pentest-harness/dsh-session-query": "workspace:^",
+    "@pentest-harness/dsh-session-query-sqlite": "workspace:^",
+    "@pentest-harness/dsh-tools": "workspace:^",
+    "@pentest-harness/dsh-agent-instructions": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@pentest-harness/cordis-plugin-include": "workspace:^",
+    "@pentest-harness/cordis-plugin-loader": "workspace:^",
+    "@pentest-harness/dsh-acp": "workspace:^",
+    "@pentest-harness/dsh-agent": "workspace:^",
+    "@pentest-harness/dsh-agent-spine-demo": "workspace:^",
+    "@pentest-harness/dsh-app-boot": "workspace:^",
+    "@pentest-harness/dsh-invariants": "workspace:^",
+    "@pentest-harness/dsh-session-checkpoint-policy": "workspace:^",
+    "@pentest-harness/dsh-session-persistence-jsonl": "workspace:^",
+    "@pentest-harness/dsh-session-query": "workspace:^",
+    "@pentest-harness/dsh-session-query-sqlite": "workspace:^",
+    "@pentest-harness/dsh-system-prompt": "workspace:^",
+    "@pentest-harness/dsh-tools": "workspace:^",
+    "@pentest-harness/dsh-agent-instructions": "workspace:^",
+    "@pentest-harness/cordis": "workspace:^",
+    "@pentest-harness/schemastery": "workspace:^"
+  }
+}

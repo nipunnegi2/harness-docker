@@ -1,0 +1,25 @@
+# Exercise the model-facing LSP tool through the shipped ACP app and Loader entry path.
+# The scenario workspace supplies the deterministic stdio server used by this test composition.
+- id: base
+  name: '@pentest-harness/cordis-plugin-include'
+  config:
+    path: ../cordis.yml
+    patches:
+      - insert:
+          - id: lsp
+            name: '@pentest-harness/dsh-lsp'
+          - id: lsp-stdio
+            name: '@pentest-harness/dsh-lsp-stdio'
+            config:
+              servers:
+                fixture:
+                  command: !!js process.execPath
+                  args: ['./lsp-server.mjs']
+                  extensionToLanguage:
+                    '.ts': typescript
+          - id: timeout-policy
+            name: '@pentest-harness/dsh-tool-call-timeout-policy'
+          - id: tool-lsp
+            name: '@pentest-harness/dsh-tool-lsp'
+            config:
+              maxLocations: 1
